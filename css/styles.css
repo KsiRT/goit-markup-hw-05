@@ -8,6 +8,7 @@
   --btn-primary: #e7e9fc;
   --subtle-text: #8e8f99;
   --green: #31d0aa;
+  --common-transition: 950ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /**==========================  Сommon classes =====================*/
@@ -106,12 +107,28 @@ img {
   display: inline-block;
   padding: 24px 0;
   color: var(--dark);
+  transition: color var(--common-transition);
 }
 
 .nav-list {
   display: flex;
   gap: 40px;
   margin-right: auto;
+}
+
+.current-page-wrap {
+  position: relative;
+}
+
+.current-page::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: var(--pressed-state);
+  border-radius: 2px;
 }
 
 /*!---------------------------- Contacts --------------------------*/
@@ -126,6 +143,7 @@ img {
   font-size: 16px;
   line-height: 1.5;
   text-decoration: none;
+  transition: color var(--common-transition);
 }
 
 .contact:hover,
@@ -158,6 +176,7 @@ img {
   background-repeat: no-repeat;
   background-size: cover;
   max-width: 1440px;
+  margin: 0 auto;
 }
 .hero-title {
   color: var(--white-bg);
@@ -185,6 +204,7 @@ img {
   border-radius: 4px;
   border: 0;
   min-width: 169px;
+  transition: background-color var(--common-transition);
 }
 
 .button-hero:hover,
@@ -326,6 +346,7 @@ img {
   align-items: center;
   justify-content: center;
   fill: var(--btn-secondary);
+  transition: background-color var(--common-transition);
 }
 .soc-link:hover,
 .soc-link:focus {
@@ -361,16 +382,20 @@ img {
   justify-content: center;
   height: 100%;
   width: 100%;
+  transition: color var(--common-transition),
+    border-color var(--common-transition);
 }
-.customer-icon {
-  fill: currentColor;
-  display: flex;
-}
+
 .customer-link:hover,
 .customer-link:focus {
   color: var(--pressed-state);
   border-color: var(--pressed-state);
 }
+.customer-icon {
+  fill: currentColor;
+  display: flex;
+}
+
 /*!-------------------------------- FOOTER ----------------------- */
 .footer {
   background-color: var(--dark);
@@ -410,11 +435,6 @@ img {
   display: flex;
   gap: 16px;
 }
-/* .soc-media-footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: last baseline;
-} */
 
 .footer-soc-title {
   font-weight: 500;
@@ -434,6 +454,7 @@ img {
   align-items: center;
   justify-content: center;
   fill: var(--btn-secondary);
+  transition: background-color var(--common-transition);
 }
 
 .footer-soc-link:hover,
@@ -468,6 +489,9 @@ img {
 
 .filter-btn {
   padding: 12px 24px;
+  transition: background-color var(--common-transition),
+    color var(--common-transition), border var(--common-transition),
+    box-shadow var(--common-transition);
 }
 
 .filter-btn:hover,
@@ -512,4 +536,84 @@ img {
 .example:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+.project-examples:hover .example-top-text,
+.project-examples:focus .example-top-text {
+  transform: translateY(0);
+}
+.example-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.example-top-text {
+  position: absolute;
+  top: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  padding: 40px 32px;
+  color: var(--btn-secondary);
+  background-color: var(--primary-brand);
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform var(--common-transition);
+}
+
+/* ! ========================  MODAL  ============================ */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 408px;
+  min-height: 584px;
+  transform: translate(-50%, -50%) scale(1);
+  background-color: var(--white-bg);
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: transform var(--common-transition);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.modal-close {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  background-color: var(--btn-primary);
+  border-radius: 50%;
+  background: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 20px;
+  top: 20px;
+  transition: background-color var(--common-transition),
+    fill var(--common-transition);
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  background-color: var(--pressed-state);
+  fill: var(--white-bg);
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
