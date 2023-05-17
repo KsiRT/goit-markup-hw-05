@@ -8,7 +8,8 @@
   --btn-primary: #e7e9fc;
   --subtle-text: #8e8f99;
   --green: #31d0aa;
-  --common-transition: 950ms cubic-bezier(0.4, 0, 0.2, 1);
+  --dairy: #fcfcfc;
+  --common-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /**==========================  Сommon classes =====================*/
@@ -537,8 +538,8 @@ img {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
-.project-examples:hover .example-top-text,
-.project-examples:focus .example-top-text {
+.example:hover .example-top-text,
+.example:focus .example-top-text {
   transform: translateY(0);
 }
 .example-wrap {
@@ -575,9 +576,9 @@ img {
   top: 50%;
   left: 50%;
   width: 408px;
-  min-height: 584px;
+  min-height: 576px;
   transform: translate(-50%, -50%) scale(1);
-  background-color: var(--white-bg);
+  background-color: var(--dairy);
   border-radius: 4px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -600,16 +601,18 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  right: 20px;
-  top: 20px;
+  right: 24px;
+  top: 24px;
   transition: background-color var(--common-transition),
-    fill var(--common-transition);
+    fill var(--common-transition), border var(--common-transition);
+  cursor: pointer;
 }
 
 .modal-close:hover,
 .modal-close:focus {
   background-color: var(--pressed-state);
   fill: var(--white-bg);
+  border: none;
 }
 
 .is-hidden {
